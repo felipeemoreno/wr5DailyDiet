@@ -1,16 +1,18 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/Feather';
+import glyphmap from 'react-native-vector-icons/glyphmaps/FontAwesome.json';
 
-import {Container, Icon, Title} from './styles';
+import {Container, Title} from './styles';
 import {TouchableOpacityProps} from 'react-native';
 
 type ButtonProps = TouchableOpacityProps & {
   title: string;
-  icon?: string;
+  icon?: keyof typeof glyphmap;
 };
-const Button: React.FC<ButtonProps> = ({title, ...rest}) => {
+const Button: React.FC<ButtonProps> = ({title, icon, ...rest}) => {
   return (
     <Container {...rest}>
-      <Icon source={icon} size={20} color="#fff" />
+      {icon && <Icon name={icon} size={14} color="#fff" />}
       <Title>{title}</Title>
     </Container>
   );
